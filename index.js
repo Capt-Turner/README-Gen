@@ -44,11 +44,13 @@ const questions = [
         type:'input',
         name:'install',
         message:'What command will be run to install dependencies?',
+        default:'npm i',
     },
     {
         type:'input',
         name:'test',
         message:'What command will be run to execute tests?',
+        default:'npm test',
     },
 ];
 
@@ -59,7 +61,8 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer.prompt(questions).then((inquirerResponses)=>{
         console.log("Generating your README. Standby.");
-        writeToFile("README.md",genMD({...inquirerResponses}));
+        writeToFile("GeneratedREADME.md",genMD({...inquirerResponses}));
+        console.log("README generated.")
     });
 }
 
